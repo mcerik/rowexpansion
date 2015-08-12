@@ -1,0 +1,22 @@
+# Maven build directory
+target/
+
+# Release backup
+pom.xml.versionsBackup
+
+# Eclipse project files
+.classpath
+.project
+.settings/
+.metadata/
+
+# OS generated
+.DS_Store
+.DS_Store?
+._*
+*.~*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*.swp

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:f="http://java.sun.com/jsf/core"
+  xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui" xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+  
+<h:head profile="http://www.w3.org/2005/10/profile">
+  <title><ui:insert name="title">Demo</ui:insert></title>
+</h:head>
+<h:body>
+  <h:form id="mainForm" prependId="false">
+    <p:dataTable var="order" widgetVar="orderTable" lazy="true" value="#{ordersBean.orders}" paginator="true" rows="20"
+      rowsPerPageTemplate="20,50,100" filterDelay="300" styleClass="filtered">
+
+      <p:column width="4%">
+        <p:rowToggler />
+      </p:column>
+
+      <p:column headerText="Order number" width="96%">
+        <h:outputText value="#{order.number}" />
+      </p:column>
+
+      <p:rowExpansion>
+        <h:panelGrid columns="1">
+          <h:outputText value="#{order.number}" />
+          <h:outputText value="#{order.info}" />
+
+          <h:dataTable var="item" value="#{ordersBean.getItemsInOrder(order.number)}">
+            <h:column>
+              <h:outputText value="#{item.title}" />
+            </h:column>
+          </h:dataTable>
+
+        </h:panelGrid>
+      </p:rowExpansion>
+    </p:dataTable>
+  </h:form>
+</h:body>
+</html>
